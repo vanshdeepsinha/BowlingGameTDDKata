@@ -12,16 +12,22 @@ public class BowlingGameService {
 	public int evalGameScore(int [] eachGame) {
 		rolls = eachGame;
 		for(int frame=0, roll=0; frame <10; frame++, roll++) {
-			if(isSpare(roll)) {
+			if (isStrike(rolls[roll])) {
+			     gameScore += 10 + rolls[roll+1] + rolls[roll+2];
+			} else if(isSpare(roll)) {
 				sumSpare(roll);
 				roll++;
-			} else {
+		    } else {
 				sumTurns(roll);
-			}
-		}
+		   }
+	   }
 		return gameScore;
 	}
 	
+	private boolean isStrike(int roll) {
+		return roll == 10;
+	}
+
 	private void sumTurns(int roll) {
 		gameScore += rolls[roll] + rolls[roll+1];
 	}
