@@ -13,7 +13,7 @@ public class BowlingGameService {
 		rolls = eachGame;
 		for(int frame=0, roll=0; frame <10; frame++, roll++) {
 			if (isStrike(rolls[roll])) {
-			     gameScore += 10 + rolls[roll+1] + rolls[roll+2];
+				sumStrike(roll);
 			} else if(isSpare(roll)) {
 				sumSpare(roll);
 				roll++;
@@ -26,6 +26,10 @@ public class BowlingGameService {
 	
 	private boolean isStrike(int roll) {
 		return roll == 10;
+	}
+	
+	private void sumStrike(int roll) {
+		gameScore += 10 + rolls[roll+1] + rolls[roll+2];
 	}
 
 	private void sumTurns(int roll) {
