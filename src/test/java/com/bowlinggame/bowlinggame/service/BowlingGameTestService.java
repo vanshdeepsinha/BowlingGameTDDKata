@@ -8,7 +8,7 @@ public class BowlingGameTestService {
 	
 	public int[] EACH_GAME_PINS_DOWN_ONE = {1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1};
 	
-	
+	public int[] EACH_GAME_PINS_DOWN_TWO = {2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2, 2,2};
 	
 	private BowlingGameService bowlingGameService = new BowlingGameService();
 	
@@ -16,6 +16,14 @@ public class BowlingGameTestService {
     public void testGameForOnes() {
         int actualResult = bowlingGameService.evalGameScore(EACH_GAME_PINS_DOWN_ONE);
         int expected = 20;
+        
+        assertEquals(expected, actualResult);
+    }
+	
+	@Test
+    public void testGameForTwos() {
+    	int actualResult = bowlingGameService.evalGameScore(EACH_GAME_PINS_DOWN_TWO);
+        int expected = 40;
         
         assertEquals(expected, actualResult);
     }
